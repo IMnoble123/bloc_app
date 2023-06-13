@@ -1,0 +1,1 @@
+enum CouponStatus { none, matched, unmatched, loading }
