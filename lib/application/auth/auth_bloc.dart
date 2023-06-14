@@ -39,5 +39,18 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         emit(AuthState.error(error: e.toString()));
       }
     });
+
+    on<CreateUserProfiel>((event, emit) async {
+      emit(const AuthState.loading());
+      try {
+        final res = await authRepo.createUserProfile(
+          mobileNo: event.mobileNo,
+          firstName: event.firstName,
+        );
+        emit(AuthState.loaded(signUpModel: res));
+      } catch (e) {
+        emit(AuthState.error(error: e.toString()));
+      }
+    });
   }
 }

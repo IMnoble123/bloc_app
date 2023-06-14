@@ -6,6 +6,9 @@ class AppApi {
 
   // ignore: non_constant_identifier_names
   static String LOGIN = '${BASE_URL}authenticate/cs-login';
+  
+  // ignore: non_constant_identifier_names
+  static String CREATE_USER_PROFILE = '${BASE_URL}cs/creating-Userprofile';
 
   // ignore: non_constant_identifier_names
   static String All_CS = '${BASE_URL}admin/allCs';
@@ -20,7 +23,7 @@ class AppApi {
   static String GET_THERIPIEST = '${BASE_URL}admin/alltherapists';
 
   // ignore: non_constant_identifier_names
-  static String CREATE_USER_PROFILE = '${BASE_URL}authenticate/csSignup';
+  static String SIGNUP = '${BASE_URL}authenticate/csSignup';
 
   // ignore: non_constant_identifier_names
   static String ASSIGN_THERAPIEST_TO_USER = '${BASE_URL}user/add-therapist-to-user';

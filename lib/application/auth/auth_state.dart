@@ -12,5 +12,5 @@ class AuthState extends Equatable {
   const AuthState.error({required this.error, this.signUpModel}) : isLoading = false;
 
   @override
-  List<Object> get props => [];
+  List<Object?> get props => [isLoading, signUpModel, error];
 }

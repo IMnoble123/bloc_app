@@ -11,4 +11,5 @@ abstract class AuthRepo {
     required String gender,
     required String password,
   });
+  Future<SignUpModel> createUserProfile({required String mobileNo, required String firstName});
 }

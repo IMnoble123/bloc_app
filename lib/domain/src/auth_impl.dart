@@ -11,10 +11,8 @@ class AuthImpl extends AuthRepo {
   Future signIn({required String mobileNo, required String password}) async {
     try {
       final reqBody = {
-        "newUser": {
-          "mobileNo": mobileNo,
-          "password": password,
-        }
+        "mobileNo": mobileNo,
+        "password": password,
       };
       final response = await http.post(Uri.parse(AppApi.LOGIN), body: reqBody);
       if (response.statusCode == 200) {
@@ -49,6 +47,27 @@ class AuthImpl extends AuthRepo {
           "password": password,
           "confirmPassword": password,
         }
+      };
+      final response = await http.post(Uri.parse(AppApi.SIGNUP), body: reqBody);
+      if (response.statusCode == 200) {
+        return SignUpModel.fromJson(jsonDecode(response.body));
+      } else {
+        throw jsonDecode(response.body)['message'];
+      }
+    } on HttpException catch (e) {
+      throw ApiExceptions.handle(e.message);
+    }
+  }
+
+  @override
+  Future<SignUpModel> createUserProfile({
+    required String mobileNo,
+    required String firstName,
+  }) async {
+    try {
+      final reqBody = {
+        "mobileNo": mobileNo,
+        "first_name": firstName,
       };
       final response = await http.post(Uri.parse(AppApi.CREATE_USER_PROFILE), body: reqBody);
       if (response.statusCode == 200) {

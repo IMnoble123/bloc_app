@@ -26,7 +26,7 @@ class SignUp extends AuthEvent {
   });
 
   @override
-  List<Object> get props => [this];
+  List<Object> get props => [emailId, mobileNo, firstName, lastName, dob, gender, password];
 }
 
 class SignIn extends AuthEvent {
@@ -37,5 +37,16 @@ class SignIn extends AuthEvent {
     required this.password,
   });
   @override
-  List<Object> get props => [];
+  List<Object> get props => [mobileNo, password];
+}
+
+class CreateUserProfiel extends AuthEvent {
+  final String mobileNo;
+  final String firstName;
+  const CreateUserProfiel({
+    required this.mobileNo,
+    required this.firstName,
+  });
+  @override
+  List<Object> get props => [mobileNo, firstName];
 }
