@@ -30,7 +30,7 @@ class AppApi {
 
   // ignore: non_constant_identifier_names
   static String GET_THERAPIEST_BY_ID = '${BASE_URL}admin/gettherapistById';
-  
+
   // ignore: non_constant_identifier_names
   static String CREAT_BOOKING_WITH_CASH = '${BASE_URL}admin/createBooking';
 

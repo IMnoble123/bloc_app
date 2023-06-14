@@ -20,12 +20,14 @@ version: 1.0.0+1
 environment:
   sdk: '>=2.18.6 <3.0.0'
 
+dependency_overrides: 
+  http: ^0.13.5
 
 dependencies:
   flutter:
     sdk: flutter
 
-
+  internet_connection_checker_plus: ^2.0.0
   cupertino_icons: ^1.0.2
   intl: ^0.18.1
   bloc: ^7.1.0

@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ryt_life_cs/bloc/dashboard.dart';
 import 'package:ryt_life_cs/bloc/event/dashboard_event.dart';
-import 'package:ryt_life_cs/screens/mainScreen/register_screen.dart';
 import 'package:ryt_life_cs/utils/app_colors.dart';
 import 'package:ryt_life_cs/utils/app_icons.dart';
 
-class CustomeAppBar extends StatelessWidget with PreferredSizeWidget {
+class CustomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   final bool? isSelected;
   final String? profileUrl;
   const CustomeAppBar({super.key, this.profileUrl, this.isSelected});
@@ -47,8 +46,7 @@ class CustomeAppBar extends StatelessWidget with PreferredSizeWidget {
               children: [
                 SelectedIcon(
                   url: AppIcons.addUser,
-                  onTap: () =>
-                      context.read<DashboardBloc>().add(const CreateUserAccountScreen(isCreateUserScreen: true)),
+                  onTap: () => context.read<DashboardBloc>().add(const CreateUserAccountScreen(isCreateUserScreen: true)),
                   isSelected: false,
                   gWidth: 48.44,
                   gHeight: 49.63,
@@ -109,8 +107,7 @@ class SelectedIcon extends StatelessWidget {
   final bool isSelected;
   final double? gWidth;
   final double? gHeight;
-  const SelectedIcon(
-      {required this.url, required this.onTap, this.isSelected = false, this.gHeight, this.gWidth, super.key});
+  const SelectedIcon({required this.url, required this.onTap, this.isSelected = false, this.gHeight, this.gWidth, super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -24,11 +24,12 @@ class LoginState extends Equatable {
     String? resetEmailID,
   }) {
     return LoginState(
-        userStatus: userStatus ?? this.userStatus,
-        loginStatus: loginStatus ?? this.loginStatus,
-        errorMsg: errorMsg ?? this.errorMsg,
-        errorStatus: errorStatus ?? this.errorStatus,
-        resetEmailID: resetEmailID ?? this.resetEmailID);
+      userStatus: userStatus ?? this.userStatus,
+      loginStatus: loginStatus ?? this.loginStatus,
+      errorMsg: errorMsg ?? this.errorMsg,
+      errorStatus: errorStatus ?? this.errorStatus,
+      resetEmailID: resetEmailID ?? this.resetEmailID,
+    );
   }
 
   @override

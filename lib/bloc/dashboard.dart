@@ -17,15 +17,7 @@ import 'package:ryt_life_cs/extension/list_of_slots_x.dart';
 
 enum DashboardStatus { UPCOMING, LOADING, HOME }
 
-enum BookApptPageStatus {
-  LOADING,
-  NEW_APPOINTMENT,
-  RESCHEDULE_APPOINTMENT,
-  MAKE_PAYMENT,
-  PAST_DR_APPOINTMENT,
-  ERROR,
-  NO_SLOTS
-}
+enum BookApptPageStatus { LOADING, NEW_APPOINTMENT, RESCHEDULE_APPOINTMENT, MAKE_PAYMENT, PAST_DR_APPOINTMENT, ERROR, NO_SLOTS }
 
 enum PaymentStatus { uninitialized, paid, confirmed, failed, cancelled, none }
 
@@ -37,18 +29,16 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
   final TheripiestRepository theripiestRepository;
   final BookingRepository bookingRepository;
 
-  DashboardBloc(
-      {required this.theripiestRepository,
-      required this.createUserrepository,
-      required this.notificationRepository,
-      required this.bookingRepository})
-      : super(DashboardState(
-          notificationModel: NotificationModel(),
-          theripiestModel: TheripiestModel(),
-          userModel: UserModel(),
-          therapiestCalendarModel: TherapiestCalendarModel(),
-          bookingApiModel: BookingApiModel(),
-        ));
+  DashboardBloc({required this.theripiestRepository, required this.createUserrepository, required this.notificationRepository, required this.bookingRepository})
+      : super(
+          DashboardState(
+            notificationModel: NotificationModel(),
+            theripiestModel: TheripiestModel(),
+            userModel: UserModel(),
+            therapiestCalendarModel: TherapiestCalendarModel(),
+            bookingApiModel: BookingApiModel(),
+          ),
+        );
 
   @override
   Stream<DashboardState> mapEventToState(DashboardEvent event) async* {
@@ -150,8 +140,7 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
         days = state.therapiestCalendarModel.result?[0].slots?.saturday;
       }
       days?.forEach((element) {
-        String fromTime =
-            '${element.from?.split(":")[0]}:${element.from?.split(":")[1]} ${element.from?.split(":")[2]}';
+        String fromTime = '${element.from?.split(":")[0]}:${element.from?.split(":")[1]} ${element.from?.split(":")[2]}';
         String toTime = '${element.to?.split(":")[0]}:${element.to?.split(":")[1]} ${element.to?.split(":")[2]}';
         timeSlot.add(fromTime);
         timeSlot.add(toTime);
@@ -165,8 +154,7 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
       //   dashboardState: state.dashboardState
       //       .copyWith(calenderByTherapistModel: CalenderByTherapistModel()),
       // );
-      TherapiestCalendarModel? therapiestCalendarModel =
-          await theripiestRepository.getTherapiestCalendarById(id: event.therapiestId);
+      TherapiestCalendarModel? therapiestCalendarModel = await theripiestRepository.getTherapiestCalendarById(id: event.therapiestId);
       TheripiestModel? therapistProfileData = await theripiestRepository.getTherapiestById(id: event.therapiestId);
 
       List<String>? avilableSlots = [];
@@ -191,10 +179,7 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
       //   //     '${element.to?.split(":")[0]}:${element.to?.split(":")[1]} ${element.to?.split(":")[2]}';
       //   avilableSlots.add(fromTime);
       // });
-      yield state.copyWith(
-          therapiestCalendarModel: therapiestCalendarModel,
-          timeSlots: avilableSlots,
-          therapistProfileData: therapistProfileData);
+      yield state.copyWith(therapiestCalendarModel: therapiestCalendarModel, timeSlots: avilableSlots, therapistProfileData: therapistProfileData);
     }
     if (event is UpdateSelectedSlot) {
       yield state.copyWith(selectedSlot: event.value);

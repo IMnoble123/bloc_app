@@ -1,8 +1,6 @@
 import 'dart:convert';
 import 'dart:developer';
-
 import 'package:http/http.dart';
-import 'package:ryt_life_cs/models/theripiest_model.dart';
 import 'package:ryt_life_cs/models/user_model.dart';
 import 'package:ryt_life_cs/utils/app_api.dart';
 import 'package:ryt_life_cs/utils/app_strings.dart';
